@@ -1,12 +1,5 @@
-import Link from "next/link";
-import { Suspense } from "react";
-import HomeClient from "@/components/HomeClient";
-
+import { redirect } from "next/navigation";
 
 export default function Home() {
-    return (
-        <Suspense fallback={<>Loading...</>}>
-            <HomeClient />
-        </Suspense>
-    );
+    redirect('/login'); 
 }

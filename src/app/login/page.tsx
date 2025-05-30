@@ -1,5 +1,6 @@
-import { Suspense } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
+'use client';
+
+import LoginForm from "@/components/LoginForm/LoginForm";
 
 export default function LoginPage() {
   return (
@@ -10,9 +11,7 @@ export default function LoginPage() {
             alt="Submittals Logo"
             className="invert-0 light:invert p-4"
           />
-        <Suspense>
           <LoginForm />
-        </Suspense>
       </div>
     </div>
   );
