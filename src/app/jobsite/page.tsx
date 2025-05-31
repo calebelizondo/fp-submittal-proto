@@ -36,12 +36,7 @@ const PLACEHOLDER_SUB_DATA: Submittal[] = [
 
 export default function Jobsite() {
 
-    const [currentSubmittals, setCurrentSubmittals] = useState<Submittal[]>(PLACEHOLDER_SUB_DATA); 
-
-
-    const handleStatusFilterChange = () => {
-        
-    };
+    const [currentSubmittals, ] = useState<Submittal[]>(PLACEHOLDER_SUB_DATA); 
 
     return (
         <>
