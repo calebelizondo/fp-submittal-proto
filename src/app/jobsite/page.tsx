@@ -39,8 +39,6 @@ export default function Jobsite() {
     const [currentSubmittals, ] = useState<Submittal[]>(PLACEHOLDER_SUB_DATA); 
     const [previewActive, setPreviewActive] = useState<boolean>(false);
 
-    useEffect(() => {console.log(previewActive)}, [previewActive]);
-
     return (
         <>
             <Navbar>
