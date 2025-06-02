@@ -1,5 +1,4 @@
 import Navbar from '@/components/navbar/Navbar'
-import { Searchbar } from '@/components/Searchbar'
 import React from 'react'
 
 export default function Dashboard() {

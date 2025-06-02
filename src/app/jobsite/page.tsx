@@ -2,7 +2,7 @@
 
 import Navbar from '@/components/navbar/Navbar';
 import { Searchbar } from '@/components/Searchbar';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 interface Submittal {
     id: number;
