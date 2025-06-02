@@ -2,7 +2,7 @@
 
 import Navbar from '@/components/navbar/Navbar';
 import { Searchbar } from '@/components/Searchbar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Submittal {
     id: number;
@@ -37,31 +37,37 @@ const PLACEHOLDER_SUB_DATA: Submittal[] = [
 export default function Jobsite() {
 
     const [currentSubmittals, ] = useState<Submittal[]>(PLACEHOLDER_SUB_DATA); 
+    const [previewActive, setPreviewActive] = useState<boolean>(false);
+
+    useEffect(() => {console.log(previewActive)}, [previewActive]);
 
     return (
         <>
             <Navbar>
-                <a href="/dashboard" className="flex flex-row h-full p-3">
+                <a href="/dashboard" className="flex flex-row h-full p-2">
                     <img src="/back.svg" alt="Back" />
                 </a>
                 <div className="h-full flex items-center">
                     <h1 className='text-black m-2'><b>SITE ID/ALIAS</b></h1>
                     <Searchbar />
                 </div>
-                <div className="flex flex-row h-full p-2">
-                    <img src="/print.svg" alt="Print" />
+                <div className="flex flex-row h-full p-1">
+                    <img className="mr-1" src="/print.svg" alt="Print" />
                     <img src="/download.svg" alt="Download"/>
                 </div>
             </Navbar>
-            <div className="p-4">
+            <div className="p-4 justify-right">
+                <a href="/submittal" className="p-1 justify-between flex flex-row border-2 rounded-md bg-black fixed right-2 bottom-2">
+                    <img className="h-10 filter invert" src="/add.svg" alt="Add" />
+                    <h1 className='text-white m-2'>NEW SUBMITTAL</h1>
+                </a>
+
                 <div className="grid grid-cols-3 font-bold border-b py-2">
                     <div className='flex flex-row justify-between'>
                         <div>ID</div> 
-                        {/* <img className="h-[20px] mx-[10px]" src="/filter.svg" alt="filter" /> */}
                     </div>
                     <div className='flex flex-row justify-between'>
                         <div>ALIAS</div> 
-                        {/* <img className="h-[20px] mx-[10px]" src="/filter.svg" alt="filter" /> */}
                     </div>
                     <div className='flex flex-row justify-between'>
                         <div>STATUS</div> 
@@ -70,14 +76,31 @@ export default function Jobsite() {
                 </div>
 
                 {currentSubmittals.map((s: Submittal) => (
-                    <div className="grid grid-cols-3 border-b py-2" key={s.id}>
+                    <div onClick={() => setPreviewActive(true)}key={s.id} className="grid grid-cols-3 border-b py-2">
                         <div className='text-right'>{s.id}</div>
                         <div className='text-right'>{s.alias}</div>
                         <div className='text-right'>{s.status}</div>
                     </div>
                 ))}
             </div>
-        
+
+            {previewActive && (
+                <div className="fixed inset-0 z-50 bg-[rgba(0,0,0,0.6)] flex items-center justify-center">
+                    <div className="bg-white rounded-lg p-4 max-w-4xl w-full max-h-[90vh] overflow-auto shadow-lg relative">
+                        <button
+                            onClick={() => setPreviewActive(false)}
+                            className="absolute top-2 right-2 text-gray-600 hover:text-black"
+                        >
+                            ✕
+                        </button>
+                        <h2 className="text-xl font-bold mb-4">Submittal Preview</h2>
+                        <iframe
+                            src="/blank.pdf"
+                            className="w-full h-[70vh] border rounded"
+                        />
+                    </div>
+                </div>
+            )}
         </>
-  )
+    )
 }

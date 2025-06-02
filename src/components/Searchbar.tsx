@@ -4,9 +4,8 @@ export const Searchbar = () => {
   return (
         <div className="relative" id="input">
         <input
-            value=""
             placeholder="Search..."
-            className="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-slate-200 appearance-none focus:border-transparent outline outline-2 outline-primary ring-0 border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
+            className="block w-full text-sm h-12 px-4 text-slate-900 bg-white rounded-[8px] border border-slate-200 appearance-none focus:border-transparent outline outline-2 outline-primary ring-0 border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
             id="floating_outlined"
             type="text"
         />
